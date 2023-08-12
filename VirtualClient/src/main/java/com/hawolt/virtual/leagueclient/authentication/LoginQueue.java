@@ -35,7 +35,7 @@ public class LoginQueue extends StringTokenSupplier implements IAuthentication {
         payload.put("clientName", "lcu");
         payload.put("entitlements", tokenSupplier.get("entitlement.lol.entitlements_token"));
         payload.put("userinfo", tokenSupplier.get("userinfo.lol.userinfo_token"));
-        RequestBody post = RequestBody.create(payload.toString(), Constant.APPLICATION_JSON);
+        RequestBody post = RequestBody.create( Constant.APPLICATION_JSON, payload.toString());
         Request request = new Request.Builder()
                 .url(getURL())
                 .addHeader("Authorization", String.format("Bearer %s", tokenSupplier.get("lol.access_token")))

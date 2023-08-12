@@ -22,7 +22,7 @@ public class Entitlement extends StringTokenSupplier implements IAuthentication 
 
     @Override
     public String authenticate(Gateway gateway, IVersionSupplier versionSupplier, StringTokenSupplier tokenSupplier) throws IOException {
-        RequestBody post = RequestBody.create("{ \"urn\": \"urn:entitlement:%\" }", Constant.APPLICATION_JSON);
+        RequestBody post = RequestBody.create(Constant.APPLICATION_JSON, "{ \"urn\": \"urn:entitlement:%\" }");
         Request request = new Request.Builder()
                 .url(getURL())
                 .addHeader("Authorization", String.format("Bearer %s", tokenSupplier.get("access_token")))

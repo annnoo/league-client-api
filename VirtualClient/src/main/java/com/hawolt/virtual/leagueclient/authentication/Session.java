@@ -41,7 +41,7 @@ public class Session extends StringTokenSupplier implements IAuthentication {
         JSONObject claims = new JSONObject();
         claims.put("cname", "lcu");
         payload.put("claims", claims);
-        RequestBody post = RequestBody.create(payload.toString(), Constant.APPLICATION_JSON);
+        RequestBody post = RequestBody.create(Constant.APPLICATION_JSON, payload.toString());
         Request request = new Request.Builder()
                 .url(getURL())
                 .addHeader("Authorization", String.format("Bearer %s", tokenSupplier.get("login_token")))
@@ -60,7 +60,7 @@ public class Session extends StringTokenSupplier implements IAuthentication {
         JSONObject payload = new JSONObject();
         String token = get("session_token");
         payload.put("lst", token);
-        RequestBody post = RequestBody.create(payload.toString(), Constant.APPLICATION_JSON);
+        RequestBody post = RequestBody.create(Constant.APPLICATION_JSON, payload.toString());
         Request request = new Request.Builder()
                 .url(getRefreshURL())
                 .addHeader("Authorization", String.format("Bearer %s", token))

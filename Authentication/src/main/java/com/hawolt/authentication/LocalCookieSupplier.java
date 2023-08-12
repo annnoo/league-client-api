@@ -76,7 +76,7 @@ public class LocalCookieSupplier implements ICookieSupplier {
     private static String createSessionCookie(IVersionSupplier versionSupplier, String __cf_bm, CookieType type, Platform platform, Gateway gateway) throws IOException {
         String nonce = generateNonce();
         String body = payload(type, nonce);
-        RequestBody post = RequestBody.create(body, Constant.APPLICATION_JSON);
+        RequestBody post = RequestBody.create(Constant.APPLICATION_JSON, body);
         String minor = versionSupplier.getVersionValue("RiotGamesApi.dll");
         Request.Builder builder = new Request.Builder()
                 .url("https://auth.riotgames.com/api/v1/authorization")

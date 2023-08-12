@@ -58,7 +58,7 @@ public class OkHttp3Client {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            String content = Diffuser.vaporize(new String(sink.getBuffer().readByteArray()));
+            String content = Diffuser.vaporize(new String(sink.buffer().readByteArray()));
             builder.append(System.lineSeparator()).append(content);
         }
         return builder.toString();

@@ -52,7 +52,7 @@ public abstract class AbstractVirtualRiotClientInstance implements IVirtualRiotC
     public String get(String username, String password, String cookie, Gateway gateway) throws IOException {
         Diffuser.add(password);
         String body = payload(username, password);
-        RequestBody put = RequestBody.create(body, Constant.APPLICATION_JSON);
+        RequestBody put = RequestBody.create(Constant.APPLICATION_JSON, body);
         String minor = localRiotFileVersion.getVersionValue("RiotGamesApi.dll");
         Request request = new Request.Builder()
                 .url("https://auth.riotgames.com/api/v1/authorization")
